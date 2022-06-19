@@ -10,7 +10,7 @@ class MainViewModel(
 
     private fun makeBoardViewState(): BoardViewState {
         return BoardViewState(
-            size = gameMaster.board.size,
+            size = gameMaster.board.sideSize,
             fruits = gameMaster.board.fruits,
             snakeHeadPosition = gameMaster.snake.head,
             snakeBodyPosition = gameMaster.snake.body

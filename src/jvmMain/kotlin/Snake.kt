@@ -1,16 +1,21 @@
-data class Snake(
-    private var startPosition: Point,
-    private var size: Int = 1
-) {
-    private val _whole = mutableListOf(startPosition)
-    val whole = _whole
+class Snake(
+    startPosition: Point
+) : ArrayList<Point>() {
+    init {
+        add(startPosition)
+    }
+
     val head
-        get() = _whole.first()
+        get() = first()
     val body
-        get() = _whole.drop(1)
+        get() = drop(1)
 
     fun move(delta: Point) {
-        _whole.add(0, head + delta)
-        _whole.removeLast()
+        add(0, head + delta)
+        removeLast()
+    }
+
+    fun grow() {
+        add(last())
     }
 }
