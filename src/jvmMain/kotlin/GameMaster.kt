@@ -18,29 +18,33 @@ class GameMaster(
     fun moveSnake(direction: Point.Direction): MoveResult {
         val newPosition = snake.head + direction.movement
 
-        // Out of board
+        // Out of board case
         if (!board.contains(newPosition)) {
             return MoveResult.LostGame
         }
 
-        // Self-collision
+        // Self-collision case
         if (snake.contains(newPosition)) {
             return MoveResult.LostGame
         }
 
-        // Fruit resolution
+        // Fruit "collision" case
         if (board.fruits.contains(newPosition)) {
             snake.grow()
             board.removeFruit(newPosition)
-            snake.move(direction.movement)
-            board.addFruit(snake)
-        } else {
-            snake.move(direction.movement)
         }
+
+        // Move
+        snake.move(direction.movement)
 
         // Win case
         if (snake.size == board.size) {
             return MoveResult.WonGame
+        }
+
+        // No existing fruit case
+        if (board.fruits.isEmpty()) {
+            board.addFruit(snake)
         }
 
         return MoveResult.MoveDone
