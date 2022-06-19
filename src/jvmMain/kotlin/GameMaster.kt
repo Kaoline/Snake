@@ -14,4 +14,19 @@ class GameMaster(
         val obstacles = snake.whole
         board.addFruit(obstacles)
     }
+
+    fun moveSnake(direction: Point.Direction) {
+        val newPosition = snake.head + direction.movement
+
+        // Out of bounds case
+        if (!board.contains(newPosition)) {
+            return
+        }
+
+        snake.move(direction.movement)
+
+        // Fruit resolution
+
+        // Win case
+    }
 }

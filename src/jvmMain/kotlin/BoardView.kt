@@ -19,9 +19,9 @@ fun BoardView(
         .border(Dp.Hairline, Color.Black)
         .padding(2.dp)
     Column {
-        for (i in (0 until boardSize)) {
+        for (j in (boardSize - 1 downTo 0)) {
             Row {
-                for (j in (0 until boardSize)) {
+                for (i in (0 until boardSize)) {
                     val p = Point(i, j)
                     when {
                         p == snakeHead -> SnakeHeadView(boxModifier)

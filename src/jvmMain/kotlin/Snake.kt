@@ -1,9 +1,16 @@
 data class Snake(
-    private var position: Point,
+    private var startPosition: Point,
     private var size: Int = 1
 ) {
-    private val _whole = mutableListOf(position)
+    private val _whole = mutableListOf(startPosition)
     val whole = _whole
-    val head = _whole.first()
-    val body = _whole.drop(1)
+    val head
+        get() = _whole.first()
+    val body
+        get() = _whole.drop(1)
+
+    fun move(delta: Point) {
+        _whole.add(0, head + delta)
+        _whole.removeLast()
+    }
 }
