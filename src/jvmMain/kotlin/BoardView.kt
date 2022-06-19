@@ -8,12 +8,10 @@ import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.dp
 
 @Composable
-fun BoardView() {
-    val boardSize = 11
-    val snakeHead = Point(5, 5)
-    val snakeBody = listOf(Point(5, 6), Point(5, 7))
-    val fruits = listOf(Point(4, 5))
-
+fun BoardView(
+    state: BoardViewState
+) {
+    val (boardSize, fruits, snakeHead, snakeBody) = state
     val boxSize = 30.dp
     val boxModifier = Modifier
         .size(boxSize)
