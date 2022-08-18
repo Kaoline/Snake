@@ -19,6 +19,7 @@ class MainViewModel(
 
     fun onDirectionInput(direction: Point.Direction) {
         gameMaster.moveSnake(direction)
+        // Hack cause I'm too lazy to put some proper observable pattern
         boardViewState = makeBoardViewState()
     }
 }
